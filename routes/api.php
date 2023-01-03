@@ -32,9 +32,9 @@ Route::group(['middleware' => 'api'], function () {
 });
 
 
-Route::group(['middleware' => ['jwt.verify']], function () {
+// Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('logout',[LogoutController::class, 'logout']);
     Route::get('/query', [ProductController::class, 'loadDataSearchReq']);
     Route::apiResource('products', ProductController::class);
-});
+// });
 

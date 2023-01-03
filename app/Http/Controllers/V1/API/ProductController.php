@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1\API;
 
+use App\Models\Product;
 use App\Traits\Response;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
@@ -30,7 +31,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $object = $this->service->insert($request);
+        $object = $this->service->insert($request->validated());
         return response()->json([
             'data' => $object,
             'message' => 'Product Inserted successfully',
@@ -57,9 +58,9 @@ class ProductController extends Controller
         $check = $this->service->getById($id);
         if(!$check) return $this->successResponse(null, "Product Not Found with ID {$id}", 404);
 
-        $object = $this->service->update($request, $id);
+        $object = $this->service->update($request->all(), $id);
         return response()->json([
-            'data' => $object,
+            'data' => new ProductResource($object),
             'message' => 'Product has been Updated',
             'code' => 200,
         ]);

@@ -2,13 +2,13 @@
 namespace App\Services;
 
 use App\Http\Requests\ProductRequest;
-use App\Repositories\ProductRepository;
+use App\Interfaces\ProductRepositoryInterface;
 
 class ProductService
 {
     protected $repo;
 
-    public function __construct(ProductRepository $repo)
+    public function __construct(ProductRepositoryInterface $repo)
     {
         $this->repo = $repo;
     }
@@ -28,22 +28,22 @@ class ProductService
         return $this->repo->getBy($column, $data);
     }
     
-    public function getById($id)
+    public function getById(int $id)
     {
         return $this->repo->getById($id);
     }
 
-    public function insert(ProductRequest $request)
+    public function insert(array $data)
     {
-        return $this->repo->store($request->all());
+        return $this->repo->store($data);
     }
 
-    public function update(ProductRequest $request, $id)
+    public function update(array $data, int $id)
     {
-        return $this->repo->update($request->all(), $id);
+        return $this->repo->update($data, $id);
     }
 
-    public function delete($id)
+    public function delete(int $id)
     {
         return $this->repo->destroy($id);
     }

@@ -10,13 +10,13 @@ interface ProductRepositoryInterface
 
     public function getBy($column, $data);
 
-    public function getById($id);
+    public function getById(int $id);
 
     public function store(array $data);
 
-    public function update(array $data, $id);
+    public function update(array $data, int $id);
 
-    public function destroy($id);
+    public function destroy(int $id);
 
     public function searchProductReq($data);
 }
