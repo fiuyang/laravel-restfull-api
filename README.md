@@ -28,10 +28,16 @@ Before you running the program, make sure you've run this command:
 
 The program will run on http://localhost:8000
 
-Index - GET - http://{localhost}/products <br />
-Create - POST - http://{localhost}/products/?name={newName}&qty={newQty}&price={newPrice} <br />
-Read - GET (all)- http://{localhost}/products/ <br />
-       GET (byID) - http://{localhost}/products/{id} <br />
-Update - PATCH -  http://{localhost}/products/{id}?name={updatedName}&qty={updatedQty}&price={updatedPrice} <br />
-Delete - DELETE - http://{localhost}/products/{id} <br />
+### API Route List
+| Method | URL                                      | Description           | Authorization           |
+| ------ | ---------------------------------------- | --------------------- | ------------------------|
+| POST   | localhost:8000/api/register              | Register              |                         |
+| POST   | localhost:8000/api/login                 | Login                 |                         |
+| POST   | localhost:8000/api/forgot-password       | Forgot Password       |                         |
+| POST   | localhost:8000/api/reset-password        | Reset Password        |                         |
+| GET    | localhost:8000/api/products              | Get All Products      | Add Authorization token |
+| POST   | localhost:8000/api/products              | Create Product        | Add Authorization token |
+| POST   | localhost:8000/api/products/{id}         | Update Product        | Add Authorization token |
+| GET    | localhost:8000/api/products/{id}         | Get Product Details   | Add Authorization token |
+| DELETE | localhost:8000/api/products/{id}         | Delete Product        | Add Authorization token |
                   
